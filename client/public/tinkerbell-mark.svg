@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Tinkerbell ticket mark">
+  <rect width="256" height="256" rx="64" fill="#FF6F0F"/>
+  <path d="M48 70a14 14 0 0 1 14-14h132a14 14 0 0 1 14 14v28a22 22 0 0 0 0 44v28a14 14 0 0 1-14 14H62a14 14 0 0 1-14-14v-28a22 22 0 0 0 0-44V70Z" fill="#fff"/>
+  <path d="M128 72v112" stroke="#FF6F0F" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 19"/>
+  <circle cx="89" cy="128" r="9" fill="#FF6F0F"/>
+  <circle cx="167" cy="128" r="9" fill="#FF6F0F"/>
+</svg>

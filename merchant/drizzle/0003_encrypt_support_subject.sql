@@ -1,0 +1,1 @@
+ALTER TABLE `business_support_tickets` ADD `subjectCiphertext` text NOT NULL;

@@ -1,0 +1,35 @@
+{
+  "stores": [
+    {
+      "id": "test-store-001",
+      "name": "팅커벨 테스트 카페",
+      "ownerUserId": "merchant-test-001",
+      "address": "서울특별시 강남구 역삼1동",
+      "status": "ACTIVE"
+    }
+  ],
+  "coupons": [],
+  "users": [
+    {
+      "id": "consumer-test-001",
+      "role": "CONSUMER",
+      "tier": "FREE",
+      "phoneVerified": true
+    },
+    {
+      "id": "merchant-test-001",
+      "role": "MERCHANT",
+      "tier": "FREE",
+      "phoneVerified": true,
+      "storeId": "test-store-001"
+    },
+    {
+      "id": "admin-test-001",
+      "role": "ADMIN",
+      "tier": "FREE",
+      "phoneVerified": true
+    }
+  ],
+  "partner_applications": [],
+  "chats": []
+}

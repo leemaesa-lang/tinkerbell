@@ -1,0 +1,2 @@
+ALTER TABLE `consumer_identity_challenges` ADD `phoneNumberConsentPolicyVersion` varchar(32);--> statement-breakpoint
+ALTER TABLE `consumer_identity_challenges` ADD `phoneNumberConsentAcceptedAt` timestamp;

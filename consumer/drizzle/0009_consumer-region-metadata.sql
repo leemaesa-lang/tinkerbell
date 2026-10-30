@@ -1,0 +1,1 @@
+ALTER TABLE `consumerCoupons` ADD `storeRegionCode` varchar(128);

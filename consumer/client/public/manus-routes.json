@@ -1,0 +1,1 @@
+{"routes":[{"path":"/","title":"소비자 앱"},{"path":"/merchant","title":"사업자 앱 미리보기"},{"path":"/admin","title":"관리자 미리보기"},{"path":"/stores/:storePublicId","title":"매장 상세"},{"path":"/community","title":"동네 커뮤니티"},{"path":"/community/chat-list","title":"커뮤니티 채팅 목록"},{"path":"/community/chat/:id","title":"모임 채팅방"}]}

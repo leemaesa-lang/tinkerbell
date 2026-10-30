@@ -1,0 +1,1 @@
+ALTER TABLE `partnerApplications` ADD `isRecurringSubscription` boolean DEFAULT true NOT NULL;

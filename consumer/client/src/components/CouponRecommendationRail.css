@@ -1,0 +1,121 @@
+.coupon-recommendations {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.coupon-recommendations-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.coupon-recommendations-heading h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.coupon-recommendations-heading > span {
+  color: #9ca3af;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.coupon-recommendations-track {
+  display: flex;
+  gap: 10px;
+  margin: 0 -16px;
+  padding: 0 16px 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  touch-action: auto;
+}
+
+.coupon-recommendations-track::-webkit-scrollbar {
+  display: none;
+}
+
+.coupon-recommendation-card {
+  display: flex;
+  flex: 0 0 96px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+.coupon-recommendation-card:focus-visible {
+  outline: 2px solid #ea580c;
+  outline-offset: 3px;
+  border-radius: 9px;
+}
+
+.coupon-recommendation-thumb {
+  display: block;
+  width: 88px;
+  height: 88px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f3f4f6;
+}
+
+.coupon-recommendation-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coupon-recommendation-image.coupon-media-image-fallback {
+  border-radius: 10px;
+}
+
+.coupon-recommendation-store,
+.coupon-recommendation-title {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.coupon-recommendation-store {
+  color: #6b7280;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.coupon-recommendation-title {
+  color: #374151;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.coupon-recommendation-benefit {
+  overflow: hidden;
+  color: #ea580c;
+  font-size: 11px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.coupon-recommendation-card:active .coupon-recommendation-thumb {
+  transform: scale(0.98);
+}

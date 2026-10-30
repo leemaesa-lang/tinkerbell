@@ -1,0 +1,196 @@
+.settlement-commission-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 16px;
+  border: 1px solid #f0e1d6;
+  border-radius: 14px;
+  background: #fffaf6;
+}
+
+.settlement-commission-summary-label {
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.settlement-commission-total {
+  color: #17202a;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.settlement-commission-total small {
+  margin-left: 4px;
+  color: #17202a;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.settlement-commission-basis {
+  margin: 0;
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.settlement-commission-list-head {
+  margin: 6px 0 0;
+}
+
+.settlement-commission-list-heading {
+  margin: 0;
+}
+
+.settlement-commission-list-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 180ms ease;
+}
+
+.settlement-commission-list-title {
+  flex: 1;
+  color: #17202a;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.settlement-commission-list-toggle:focus-visible {
+  outline: 2px solid #ea580c;
+  outline-offset: 2px;
+}
+
+.settlement-commission-list-count {
+  flex: none;
+  color: #8b95a1;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.settlement-commission-chevron {
+  flex: none;
+  color: #6b7280;
+  transition: transform 240ms ease;
+}
+
+.settlement-commission-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.settlement-commission-list-disclosure {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 280ms ease, opacity 200ms ease;
+}
+
+.settlement-commission-list-disclosure.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.settlement-commission-list-disclosure-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.settlement-commission-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.settlement-commission-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 2px;
+  border-top: 1px solid #edf0f2;
+}
+
+.settlement-commission-index {
+  flex: none;
+  width: 23px;
+  color: #ea580c;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.settlement-commission-row-main {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.settlement-commission-row-head,
+.settlement-commission-row-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.settlement-commission-row-head strong {
+  color: #17202a;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.settlement-commission-row-head span {
+  flex: none;
+  color: #15803d;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.settlement-commission-row-detail {
+  flex-wrap: wrap;
+  color: #6b7280;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.settlement-commission-row-detail strong {
+  color: #ea580c;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+@media (max-width: 360px) {
+  .settlement-commission-summary {
+    padding: 14px;
+  }
+
+  .settlement-commission-total {
+    font-size: 26px;
+  }
+
+  .settlement-commission-row-detail {
+    gap: 4px 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .settlement-commission-list-toggle,
+  .settlement-commission-chevron,
+  .settlement-commission-list-disclosure {
+    transition: none;
+  }
+}

@@ -1,0 +1,241 @@
+.merchant-credit-refund-entry .merchant-settings-row-copy strong,
+.merchant-credit-refund-entry .partner-application-live-entry strong {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.merchant-credit-refund-entry .merchant-settings-row-copy small,
+.merchant-credit-refund-entry .partner-application-live-entry small {
+  color: #374151;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.merchant-credit-refund-backdrop {
+  position: fixed;
+  z-index: 12010;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgb(17 24 39 / 58%);
+}
+
+.merchant-credit-refund-modal {
+  width: min(600px, 100%);
+  max-height: min(90vh, 850px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  color: #1f2937;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 18px;
+  box-shadow: 0 24px 80px rgb(15 23 42 / 28%);
+}
+
+.merchant-credit-refund-modal-header {
+  padding: 20px 22px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.merchant-credit-refund-modal h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 20px;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.merchant-credit-refund-modal-body {
+  display: grid;
+  gap: 17px;
+  padding: 20px 22px 22px;
+}
+
+.merchant-credit-refund-available {
+  display: flex;
+  min-height: 84px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  padding: 15px 16px;
+  background: #fff7ed;
+  border: 1px solid #fdba74;
+  border-radius: 12px;
+}
+
+.merchant-credit-refund-available span {
+  color: #374151;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.merchant-credit-refund-available strong {
+  color: #c2410c;
+  font-size: 21px;
+  font-weight: 850;
+}
+
+.merchant-credit-refund-account {
+  padding: 15px;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+}
+
+.merchant-credit-refund-account-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.merchant-credit-refund-account dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.merchant-credit-refund-account dl > div {
+  display: grid;
+  grid-template-columns: 94px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.merchant-credit-refund-account dt {
+  color: #4b5563;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.merchant-credit-refund-account dd {
+  min-width: 0;
+  margin: 0;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.merchant-credit-refund-account > p {
+  margin: 0;
+  color: #374151;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.merchant-credit-refund-policy {
+  margin: 0;
+  padding: 14px;
+  color: #7c2d12;
+  background: #fff7ed;
+  border: 1px solid #fdba74;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.65;
+}
+
+.merchant-credit-refund-amount-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.merchant-credit-refund-amount-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.merchant-credit-refund-amount-row input {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px 12px;
+  color: #111827;
+  background: #fff;
+  border: 1px solid #9ca3af;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 750;
+}
+
+.merchant-credit-refund-amount-row > span {
+  color: #111827;
+  font-size: 16px;
+  font-weight: 850;
+}
+
+.merchant-credit-refund-error,
+.merchant-credit-refund-success {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: 9px;
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.merchant-credit-refund-error {
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.merchant-credit-refund-success {
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.merchant-credit-refund-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.merchant-credit-refund-actions > button {
+  min-width: 100px;
+  min-height: 46px;
+  padding: 10px 16px;
+  color: #374151;
+  background: #fff;
+  border: 1px solid #9ca3af;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.merchant-credit-refund-actions > button:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+.merchant-credit-refund-actions > .primary {
+  color: #fff;
+  background: #ea580c;
+  border-color: #ea580c;
+}
+
+.merchant-credit-refund-actions > .primary:hover:not(:disabled) {
+  background: #c2410c;
+}
+
+@media (max-width: 600px) {
+  .merchant-credit-refund-backdrop { padding: 10px; }
+  .merchant-credit-refund-modal { max-height: 94dvh; border-radius: 15px; }
+  .merchant-credit-refund-modal-header,
+  .merchant-credit-refund-modal-body { padding-left: 16px; padding-right: 16px; }
+  .merchant-credit-refund-actions > button { flex: 1; }
+}

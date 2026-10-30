@@ -1,0 +1,22 @@
+{
+  "name": "@tinkerbell/coupon-contract",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Versioned public coupon-feed wire contract shared by Tinkerbell apps",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    },
+    "./v1": {
+      "types": "./src/v1.ts",
+      "import": "./src/v1.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "zod": "^4.1.2"
+  }
+}

@@ -1,0 +1,482 @@
+openapi: 3.1.0
+info:
+  title: Tinkerbell Business External API
+  version: 1.0.0
+  description: >-
+    Versioned contract for the business app, central server and administrator dashboard.
+    Provider-side payment/SMS delivery is not implemented by the client in this repository.
+servers:
+  - url: https://api.example.com
+    description: Replace with the central API origin.
+security:
+  - BearerAuth: []
+paths:
+  /v1/business/stores/{storeId}/coupons:
+    parameters:
+      - $ref: '#/components/parameters/StoreId'
+    get:
+      operationId: listStoreCoupons
+      summary: List a store's coupons
+      responses:
+        '200':
+          description: Coupon list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CouponListEnvelope'
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+    post:
+      operationId: createStoreCoupon
+      summary: Create a draft coupon
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCouponRequest'
+      responses:
+        '201':
+          description: Created coupon
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CouponEnvelope'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /v1/business/stores/{storeId}/coupons/{couponId}/status:
+    parameters:
+      - $ref: '#/components/parameters/StoreId'
+      - name: couponId
+        in: path
+        required: true
+        schema: { type: string, minLength: 1 }
+    patch:
+      operationId: setCouponStatus
+      summary: Activate or pause a coupon
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [status]
+              properties:
+                status: { type: string, enum: [active, paused] }
+      responses:
+        '200':
+          description: Updated coupon
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CouponEnvelope'
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /v1/business/stores/{storeId}/coupons/{couponId}/close:
+    parameters:
+      - $ref: '#/components/parameters/StoreId'
+      - name: couponId
+        in: path
+        required: true
+        schema: { type: string, minLength: 1 }
+    post:
+      operationId: closeCoupon
+      summary: Close a coupon
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      responses:
+        '200':
+          description: Closed coupon
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CouponEnvelope'
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /v1/business/stores/{storeId}/coupon-usages:
+    parameters:
+      - $ref: '#/components/parameters/StoreId'
+    get:
+      operationId: listCouponUsages
+      summary: List coupon redemption history
+      parameters:
+        - name: period
+          in: query
+          required: false
+          schema: { type: string, pattern: '^\d{4}-\d{2}$' }
+      responses:
+        '200':
+          description: Coupon usage history
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/CouponUsage' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /v1/business/stores/{storeId}/pin/verify:
+    parameters:
+      - $ref: '#/components/parameters/StoreId'
+    post:
+      operationId: verifyStorePin
+      summary: Verify a store PIN without redeeming a coupon
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [pin]
+              properties:
+                pin: { type: string, minLength: 4, maxLength: 12, writeOnly: true }
+      responses:
+        '200':
+          description: PIN verification result
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    type: object
+                    required: [storeId, verified]
+                    properties:
+                      storeId: { type: string }
+                      verified: { type: boolean }
+                      verifiedAt: { type: [string, 'null'], format: date-time }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /v1/business/stores/{storeId}/coupon-redemptions:
+    parameters:
+      - $ref: '#/components/parameters/StoreId'
+    post:
+      operationId: redeemCoupon
+      summary: Verify PIN and redeem one consumer claim atomically
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [couponId, claimId, pin]
+              properties:
+                couponId: { type: string }
+                claimId: { type: string }
+                pin: { type: string, minLength: 4, maxLength: 12, writeOnly: true }
+      responses:
+        '201':
+          description: Redeemed claim and per-use fee result
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    type: object
+                    required: [usage, usageFee]
+                    properties:
+                      usage: { $ref: '#/components/schemas/CouponUsage' }
+                      usageFee: { $ref: '#/components/schemas/UsageFee' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /v1/business/accounts/{accountId}/subscription:
+    parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema: { type: string, minLength: 1 }
+    get:
+      operationId: getSubscription
+      summary: Read business membership subscription status
+      responses:
+        '200':
+          description: Subscription status; reading does not charge the user
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data: { $ref: '#/components/schemas/Subscription' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /v1/business/stores/{storeId}/partner-settlements:
+    parameters:
+      - $ref: '#/components/parameters/StoreId'
+    get:
+      operationId: listPartnerSettlements
+      summary: Read partner commission settlement records
+      parameters:
+        - name: period
+          in: query
+          required: true
+          schema: { type: string, pattern: '^\d{4}-\d{2}$' }
+      responses:
+        '200':
+          description: Settlement records
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/PartnerSettlement' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /v1/notifications/sms:
+    post:
+      operationId: requestSms
+      summary: Ask the central server to send a consented SMS template
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/NotificationRequest' }
+      responses:
+        '202':
+          description: Accepted by central notification service or mock adapter
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/NotificationEnvelope' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /v1/notifications/alimtalk:
+    post:
+      operationId: requestAlimtalk
+      summary: Ask the central server to send an approved Alimtalk template
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AlimtalkRequest' }
+      responses:
+        '202':
+          description: Accepted by central notification service or mock adapter
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/NotificationEnvelope' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    StoreId:
+      name: storeId
+      in: path
+      required: true
+      schema: { type: string, minLength: 1 }
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: { type: string, format: uuid, pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$' }
+  responses:
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorEnvelope' }
+    Unauthorized:
+      description: Missing or expired Bearer token
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorEnvelope' }
+    Forbidden:
+      description: Caller is not authorized for the account/store
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorEnvelope' }
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorEnvelope' }
+    Conflict:
+      description: State or idempotency conflict
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorEnvelope' }
+  schemas:
+    ErrorEnvelope:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: object
+          required: [code, message, requestId]
+          properties:
+            code: { type: string }
+            message: { type: string }
+            requestId: { type: string }
+    Coupon:
+      type: object
+      required: [id, storeId, title, description, discountType, discountValue, targetRegionCodes, radiusKm, distributionMultiplier, gender, ageBands, startsAt, endsAt, issueQuantity, issuedCount, usedCount, monthlyClaimLimit, status, disclaimer, createdAt, updatedAt]
+      properties:
+        id: { type: string }
+        storeId: { type: string }
+        title: { type: string, minLength: 1, maxLength: 120 }
+        description: { type: string, maxLength: 2000 }
+        imageUrl: { type: [string, 'null'], format: uri }
+        discountType: { type: string, enum: [percent, amount, service] }
+        discountValue: { type: integer, minimum: 0 }
+        targetRegionCodes: { type: array, items: { type: string } }
+        radiusKm: { type: integer, enum: [1, 5, 10, 15] }
+        distributionMultiplier: { type: integer, enum: [3, 4, 5] }
+        gender: { type: string, enum: [all, male, female] }
+        ageBands: { type: array, items: { type: string } }
+        startsAt: { type: string, format: date-time }
+        endsAt: { type: string, format: date-time }
+        issueQuantity: { type: integer, minimum: 1 }
+        issuedCount: { type: integer, minimum: 0 }
+        usedCount: { type: integer, minimum: 0 }
+        monthlyClaimLimit: { type: integer, const: 1 }
+        status: { type: string, enum: [draft, active, paused, closed, expired] }
+        disclaimer: { type: string, const: 주요 음료는 별도 추가 금액은 현장에서 결제하셔야 합니다. }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+    CreateCouponRequest:
+      type: object
+      additionalProperties: false
+      required: [title, description, discountType, discountValue, targetRegionCodes, radiusKm, distributionMultiplier, startsAt, endsAt, issueQuantity, disclaimer]
+      properties:
+        title: { type: string, minLength: 1, maxLength: 120 }
+        description: { type: string, maxLength: 2000 }
+        imageUrl: { type: [string, 'null'], format: uri }
+        discountType: { type: string, enum: [percent, amount, service] }
+        discountValue: { type: integer, minimum: 0 }
+        targetRegionCodes: { type: array, items: { type: string } }
+        radiusKm: { type: integer, enum: [1, 5, 10, 15] }
+        distributionMultiplier: { type: integer, enum: [3, 4, 5] }
+        gender: { type: string, enum: [all, male, female] }
+        ageBands: { type: array, items: { type: string } }
+        startsAt: { type: string, format: date-time }
+        endsAt: { type: string, format: date-time }
+        issueQuantity: { type: integer, minimum: 1 }
+        monthlyClaimLimit: { type: integer, const: 1, default: 1 }
+        disclaimer: { type: string, const: "주요 음료는 별도 추가 금액은 현장에서 결제하셔야 합니다." }
+    CouponEnvelope:
+      type: object
+      required: [data]
+      properties:
+        data: { $ref: '#/components/schemas/Coupon' }
+    CouponListEnvelope:
+      type: object
+      required: [data]
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Coupon' }
+    CouponUsage:
+      type: object
+      required: [id, storeId, couponId, claimId, usedAt, discountAmountKrw]
+      properties:
+        id: { type: string }
+        storeId: { type: string }
+        couponId: { type: string }
+        claimId: { type: string }
+        usedAt: { type: string, format: date-time }
+        discountAmountKrw: { type: integer, minimum: 0 }
+    UsageFee:
+      type: object
+      required: [amountKrw, status]
+      properties:
+        amountKrw: { type: integer, const: 1000 }
+        status: { type: string, enum: [not_connected, charged, failed] }
+        referenceId: { type: [string, 'null'] }
+    Subscription:
+      type: object
+      required: [accountId, status, planName, monthlyFeeKrw, nextBillingAt, billingProvider]
+      properties:
+        accountId: { type: string }
+        status: { type: string, enum: [not_connected, active, past_due, canceled] }
+        planName: { type: string }
+        monthlyFeeKrw: { type: integer, const: 10000 }
+        nextBillingAt: { type: [string, 'null'], format: date-time }
+        billingProvider: { type: string, enum: [none, external] }
+    PartnerSettlement:
+      type: object
+      required: [id, storeId, period, status, commissionPercent, subscriptionRevenueKrw, commissionKrw, currency]
+      properties:
+        id: { type: string }
+        storeId: { type: string }
+        period: { type: string, pattern: '^\d{4}-\d{2}$' }
+        status: { type: string, enum: [pending, paid, not_connected] }
+        commissionPercent: { type: integer, const: 20 }
+        subscriptionRevenueKrw: { type: integer, minimum: 0 }
+        commissionKrw: { type: integer, minimum: 0 }
+        currency: { type: string, const: KRW }
+    NotificationRequest:
+      type: object
+      additionalProperties: false
+      required: [toPhoneE164, templateCode, consentVersion]
+      properties:
+        toPhoneE164: { type: string, pattern: '^\+[1-9]\d{7,14}$', writeOnly: true }
+        templateCode: { type: string, maxLength: 80 }
+        variables:
+          type: object
+          additionalProperties: { type: string }
+        consentVersion: { type: string, const: v1 }
+    AlimtalkRequest:
+      type: object
+      additionalProperties: false
+      required: [toPhoneE164, templateCode, consentVersion, channelProfileId]
+      properties:
+        toPhoneE164: { type: string, pattern: '^\+[1-9]\d{7,14}$', writeOnly: true }
+        templateCode: { type: string, maxLength: 80 }
+        variables:
+          type: object
+          additionalProperties: { type: string }
+        consentVersion: { type: string, const: v1 }
+        channelProfileId: { type: string, maxLength: 120 }
+    NotificationResult:
+      type: object
+      required: [requestId, accepted, provider, recipientMasked, status]
+      properties:
+        requestId: { type: string }
+        accepted: { type: boolean }
+        provider: { type: string, enum: [mock, central] }
+        recipientMasked: { type: string }
+        status: { type: string, enum: [mock_accepted, queued, rejected] }
+    NotificationEnvelope:
+      type: object
+      required: [data]
+      properties:
+        data: { $ref: '#/components/schemas/NotificationResult' }

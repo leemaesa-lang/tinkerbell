@@ -1,0 +1,104 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1791377586827,
+      "tag": "0000_zippy_wolf_cub",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1791716262539,
+      "tag": "0001_motionless_talkback",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1791810907728,
+      "tag": "0002_married_praxagora",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1791897395381,
+      "tag": "0003_numerous_iron_fist",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1791898169459,
+      "tag": "0004_supreme_maria_hill",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1792045743734,
+      "tag": "0005_real_reavers",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1792116643971,
+      "tag": "0006_consumer-persistence",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1792116828940,
+      "tag": "0007_consumer-subscriptions",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1792118394504,
+      "tag": "0008_identity-verification-prep",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1792242204652,
+      "tag": "0009_consumer-region-metadata",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1792581390642,
+      "tag": "0010_consumer-media-coordinates-product",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1792652175690,
+      "tag": "0011_minor-restriction",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1792705927211,
+      "tag": "0012_marketplace-chat",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1792735500042,
+      "tag": "0013_communication_room_type",
+      "breakpoints": true
+    }
+  ]
+}

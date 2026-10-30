@@ -1,0 +1,1 @@
+ALTER TABLE `communicationRooms` MODIFY COLUMN `meetingId` bigint NOT NULL;

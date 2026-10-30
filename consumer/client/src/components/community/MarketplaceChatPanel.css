@@ -1,0 +1,819 @@
+.marketplace-chat-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 320;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(17, 24, 39, .32);
+}
+
+.marketplace-chat-modal {
+  position: relative;
+  display: flex;
+  width: min(100%, 380px);
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 24px 18px 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(17, 24, 39, .18);
+}
+
+.marketplace-chat-modal h2 {
+  margin: 0;
+  padding-right: 30px;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.marketplace-chat-modal > p {
+  margin: -8px 0 2px;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.marketplace-chat-modal label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.marketplace-chat-modal label input {
+  width: 100%;
+  height: 44px;
+  padding: 0 11px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  font: inherit;
+  font-size: 14px;
+}
+
+.marketplace-chat-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: #374151;
+  cursor: pointer;
+}
+
+.marketplace-chat-modal-submit {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 2px;
+  border: 0;
+  border-radius: 8px;
+  background: #ff6f0f;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.marketplace-chat-panel.marketplace-chat-list-view {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  background: #ffffff;
+  color: #111827;
+}
+
+.marketplace-chat-list-view > h2 {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 16px;
+  color: #111827;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.marketplace-direct-room-list {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.marketplace-direct-room-card {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 72px;
+  align-items: center;
+  padding: 12px 16px;
+  border: 0;
+  border-bottom: 1px solid #f3f4f6;
+  border-radius: 0;
+  background: #ffffff;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.marketplace-direct-room-card:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 2px solid #ff6f0f;
+  outline-offset: -2px;
+}
+
+.marketplace-direct-room-card > .marketplace-chat-product-visual.compact {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  flex: 0 0 50px;
+  place-items: center;
+  margin-right: 12px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f3f4f6;
+}
+
+.marketplace-direct-room-card > .marketplace-chat-product-visual.compact img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.marketplace-direct-room-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+
+.marketplace-direct-room-heading,
+.marketplace-direct-room-preview {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.marketplace-direct-room-heading strong {
+  color: #111827;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.marketplace-direct-room-preview {
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.marketplace-direct-room-meta {
+  display: flex;
+  min-width: 54px;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.marketplace-direct-room-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  color: #9ca3af;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.marketplace-unread-count {
+  display: inline-grid;
+  min-width: 17px;
+  height: 17px;
+  place-items: center;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #ff6f0f;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.marketplace-chat-status {
+  display: inline-flex;
+  min-height: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.marketplace-chat-status.status-sale,
+.marketplace-chat-status.selling {
+  border-color: #a7f3d0;
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.marketplace-chat-status.status-reserved,
+.marketplace-chat-status.reserved {
+  border-color: #fed7aa;
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.marketplace-chat-status.status-sold,
+.marketplace-chat-status.sold,
+.marketplace-chat-status.done {
+  border-color: #e5e7eb;
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.chat-room-layout .marketplace-chat-message {
+  display: flex;
+  width: fit-content;
+  max-width: min(82%, 300px);
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 4px;
+  align-self: flex-start;
+}
+
+.chat-room-layout .marketplace-chat-message.mine {
+  align-self: flex-end;
+}
+
+.marketplace-chat-message-author {
+  max-width: 100%;
+  overflow: hidden;
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.marketplace-chat-message p,
+.marketplace-chat-message-image {
+  max-width: 100%;
+  margin: 0;
+  border-radius: 14px;
+}
+
+.marketplace-chat-message p {
+  padding: 10px 12px;
+  background: #f2f3f7;
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.marketplace-chat-message.mine p {
+  border-top-right-radius: 4px;
+  background: #ff6f0f;
+  color: #ffffff;
+}
+
+.marketplace-chat-message.theirs p {
+  border-top-left-radius: 4px;
+}
+
+.marketplace-chat-message-image {
+  display: block;
+  width: auto;
+  max-width: min(100%, 240px);
+  max-height: 280px;
+  object-fit: cover;
+}
+
+.marketplace-chat-message-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #9ca3af;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.marketplace-chat-message.mine .marketplace-chat-message-meta {
+  justify-content: flex-end;
+}
+
+.marketplace-chat-message-meta small {
+  color: #ea580c;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.marketplace-chat-system-message {
+  display: flex;
+  max-width: 92%;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  align-self: center;
+  margin: 0;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 11px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.marketplace-chat-system-message time {
+  flex: 0 0 auto;
+  color: #9ca3af;
+  font-size: 10px;
+}
+
+.chat-room-layout .marketplace-chat-composer {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #ffffff;
+}
+
+.marketplace-chat-attach-wrap {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.marketplace-chat-attach-button,
+.marketplace-chat-composer > button[type="submit"] {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.marketplace-chat-attach-button {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.chat-room-layout .marketplace-chat-composer > input {
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  flex: 1 1 auto;
+  padding: 0 13px;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  outline: none;
+  background: #f9fafb;
+  color: #111827;
+  font: inherit;
+  font-size: 14px;
+}
+
+.chat-room-layout .marketplace-chat-composer input:focus {
+  border-color: #ff6f0f;
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(255, 111, 15, .12);
+}
+
+.marketplace-chat-composer > button[type="submit"] {
+  background: #ff6f0f;
+  color: #ffffff;
+}
+
+.marketplace-chat-composer button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.marketplace-chat-attachment-error {
+  margin: 0;
+  padding: 4px 2px;
+  color: #b42318;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.marketplace-chat-empty {
+  display: flex;
+  min-height: 220px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.marketplace-chat-empty strong {
+  color: #374151;
+  font-size: 14px;
+}
+
+.marketplace-chat-empty span {
+  max-width: 270px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 360px) {
+  .marketplace-direct-room-card {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .marketplace-direct-room-card > .marketplace-chat-product-visual.compact {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    flex-basis: 48px;
+    margin-right: 9px;
+  }
+
+  .marketplace-direct-room-meta {
+    min-width: 48px;
+    margin-left: 5px;
+  }
+
+  .chat-room-layout .marketplace-chat-message {
+    max-width: 88%;
+  }
+}
+
+
+/* Used-chat schedule composer mirrors the meeting form while staying inside a compact modal. */
+.marketplace-chat-modal-overlay:has(.marketplace-chat-schedule-modal) {
+  padding: 12px;
+}
+
+.marketplace-chat-modal.marketplace-chat-schedule-modal {
+  box-sizing: border-box;
+  width: min(100%, 390px);
+  max-height: min(85dvh, 660px);
+  min-height: 0;
+  gap: 0;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 16px;
+}
+
+.marketplace-chat-schedule-header {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.marketplace-chat-schedule-header > div {
+  min-width: 0;
+  padding-right: 30px;
+}
+
+.marketplace-chat-schedule-header h2 {
+  padding-right: 0;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.marketplace-chat-schedule-header p {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.marketplace-chat-schedule-header .marketplace-chat-modal-close {
+  top: 12px;
+  right: 12px;
+}
+
+.marketplace-chat-modal .marketplace-chat-schedule-form {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  padding: 12px 16px !important;
+}
+
+.marketplace-chat-modal .marketplace-chat-schedule-form > label {
+  display: flex !important;
+  flex: 0 0 auto;
+  flex-direction: column !important;
+  gap: 6px !important;
+  margin: 0 !important;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.marketplace-chat-modal .marketplace-chat-schedule-form > label > span {
+  margin: 0 !important;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.marketplace-chat-modal .marketplace-chat-schedule-form > label > input {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-height: 44px !important;
+  height: 44px !important;
+  padding: 0 12px !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  font-size: 14px !important;
+}
+
+.marketplace-chat-modal .marketplace-chat-schedule-form .meeting-datetime-trigger {
+  min-height: 44px !important;
+  height: 44px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+}
+
+.marketplace-chat-schedule-footer-bar {
+  position: sticky;
+  z-index: 40;
+  bottom: 0;
+  flex: 0 0 auto;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid #f3f4f6;
+  background: #ffffff;
+}
+
+.marketplace-chat-schedule-footer-bar .marketplace-chat-modal-submit {
+  width: 100%;
+  height: 46px;
+  min-height: 46px;
+  margin: 0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.marketplace-chat-schedule-footer-bar .marketplace-chat-modal-submit:disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+
+.meeting-schedule-partner-overlay.marketplace-chat-partner-picker-overlay {
+  z-index: 360 !important;
+}
+
+
+.marketplace-chat-panel.marketplace-chat-list-view {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.marketplace-chat-list-view .marketplace-direct-room-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.marketplace-chat-list-view .marketplace-direct-room-list::-webkit-scrollbar {
+  display: none;
+}
+
+.marketplace-completed-room-card {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 72px;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  background: #ffffff;
+}
+
+.marketplace-completed-room-open {
+  display: flex;
+  min-width: 0;
+  min-height: 50px;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.marketplace-completed-room-open > .marketplace-chat-product-visual.compact {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  overflow: hidden;
+  place-items: center;
+  border-radius: 10px;
+}
+
+.marketplace-completed-room-thumb {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  overflow: hidden;
+  place-items: center;
+  border-radius: 10px;
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+
+.marketplace-completed-room-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.marketplace-completed-room-card .marketplace-direct-room-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+
+.marketplace-completed-room-card .marketplace-direct-room-heading,
+.marketplace-completed-room-card .marketplace-direct-room-preview {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.marketplace-completed-room-card .marketplace-direct-room-heading {
+  color: #111827;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.marketplace-completed-room-card .marketplace-direct-room-preview {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.marketplace-completed-room-card .marketplace-direct-room-meta {
+  display: flex;
+  min-width: 54px;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  color: #9ca3af;
+  font-size: 11px;
+}
+
+.marketplace-chat-status-archived {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.marketplace-completed-room-delete {
+  display: inline-flex;
+  min-width: 42px;
+  height: 30px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 0 7px;
+  border: 0;
+  border-radius: 6px;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.marketplace-completed-room-delete:focus-visible,
+.marketplace-completed-room-open:focus-visible {
+  outline: 2px solid #ff6f0f;
+  outline-offset: 2px;
+}
+
+.marketplace-chat-modal-overlay.marketplace-completed-delete-overlay {
+  z-index: 380;
+  padding: 16px;
+}
+
+.marketplace-chat-modal.marketplace-completed-delete-modal {
+  width: min(100%, 340px);
+  gap: 12px;
+  padding: 20px;
+}
+
+.marketplace-completed-delete-modal h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 17px;
+  font-weight: 750;
+}
+
+.marketplace-completed-delete-modal > p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.marketplace-completed-delete-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.marketplace-completed-delete-actions button {
+  min-height: 42px;
+  flex: 1 1 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.marketplace-completed-delete-actions button.danger {
+  border-color: #dc2626;
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.marketplace-completed-delete-actions button:disabled {
+  cursor: wait;
+  opacity: .6;
+}

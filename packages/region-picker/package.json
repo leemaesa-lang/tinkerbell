@@ -1,0 +1,21 @@
+{
+  "name": "@tinkerbell/region-picker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./coupon-target": "./src/coupon-target.ts",
+    "./store-radius": "./src/store-radius.ts",
+    "./regions": "./src/regions.ts",
+    "./RegionPicker": "./src/RegionPicker.tsx",
+    "./RegionSelectionSheet": "./src/RegionSelectionSheet.tsx",
+    "./RegionSelectionSheetShell": "./src/RegionSelectionSheetShell.tsx",
+    "./region-picker.css": "./src/region-picker.css",
+    "./region-selection-sheet.css": "./src/region-selection-sheet.css"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "lucide-react": "^0.453.0"
+  }
+}

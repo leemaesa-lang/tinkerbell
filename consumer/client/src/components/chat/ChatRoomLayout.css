@@ -1,0 +1,841 @@
+#root .chat-room-layout {
+  position: absolute !important;
+  inset: 0 0 calc(70px + env(safe-area-inset-bottom, 0px)) 0 !important;
+  z-index: 150 !important;
+  display: flex !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  transform: none !important;
+  box-sizing: border-box !important;
+  isolation: isolate !important;
+  color: #1f2937 !important;
+  background: #fff !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+body:has(.chat-room-layout) .app-frame {
+  height: 100vh !important;
+  height: 100dvh !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+body:has(.chat-room-layout) .app-frame .bottom-nav {
+  position: absolute !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  z-index: 130 !important;
+  display: grid !important;
+  width: 100% !important;
+  height: calc(70px + env(safe-area-inset-bottom, 0px)) !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  transform: none !important;
+  padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  background: #fff !important;
+}
+
+body:has(.chat-room-layout) .community-create-fab {
+  display: none !important;
+}
+
+#root .chat-room-layout .chat-room-layout-header {
+  position: relative !important;
+  z-index: 2 !important;
+  display: grid !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  height: calc(58px + env(safe-area-inset-top, 0px)) !important;
+  min-height: calc(58px + env(safe-area-inset-top, 0px)) !important;
+  grid-template-columns: 40px minmax(0, 1fr) 40px !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: env(safe-area-inset-top, 0px) 12px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-sizing: border-box !important;
+}
+
+#root .chat-room-layout .chat-room-layout-header button {
+  display: grid !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  place-items: center !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: #1f2937 !important;
+  cursor: pointer !important;
+}
+
+#root .chat-room-layout .chat-room-layout-header button:focus-visible {
+  outline: 2px solid #ff6f0f !important;
+  outline-offset: 2px !important;
+}
+
+#root .chat-room-layout .chat-room-layout-title {
+  display: flex !important;
+  min-width: 0 !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1px !important;
+  overflow: hidden !important;
+  text-align: center !important;
+}
+
+#root .chat-room-layout .chat-room-layout-title h1 {
+  width: 100% !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  color: #1f2937 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#root .chat-room-layout .chat-room-layout-title span {
+  max-width: 100% !important;
+  overflow: hidden !important;
+  color: #6b7280 !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#root .chat-room-layout .chat-room-layout-header-actions {
+  position: relative !important;
+  display: grid !important;
+  width: 40px !important;
+  height: 40px !important;
+  place-items: center !important;
+}
+
+#root .chat-room-layout.marketplace-chat-room-view .marketplace-chat-more-menu {
+  position: absolute !important;
+  top: calc(100% + 4px) !important;
+  right: 0 !important;
+  z-index: 60 !important;
+  display: flex !important;
+  width: 156px !important;
+  flex-direction: column !important;
+  padding: 4px 0 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+  box-shadow: 0 4px 12px #0000001f !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-more-menu
+  button {
+  display: flex !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 40px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 9px !important;
+  padding: 8px 12px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  color: #374151 !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-more-menu
+  button:hover {
+  background: #f9fafb !important;
+}
+
+#root .chat-room-layout .chat-room-layout-banner {
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+  background: #fff !important;
+}
+
+#root .chat-room-layout .chat-room-layout-messages {
+  position: relative !important;
+  z-index: 1 !important;
+  display: flex !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  flex: 1 1 0% !important;
+  flex-direction: column !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  padding: 16px 12px !important;
+  background: #fff !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+#root .chat-room-layout .chat-room-layout-composer {
+  position: relative !important;
+  z-index: 120 !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 8px 12px !important;
+  border: 0 !important;
+  border-top: 1px solid #f3f4f6 !important;
+  background: #fff !important;
+  box-sizing: border-box !important;
+  opacity: 1 !important;
+  isolation: isolate !important;
+}
+
+#root .chat-room-layout .chat-room-layout-composer > form {
+  position: static !important;
+  z-index: auto !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-top: 0 !important;
+  background: #fff !important;
+  box-sizing: border-box !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-product-bar {
+  position: relative !important;
+  top: auto !important;
+  z-index: 1 !important;
+  display: grid !important;
+  height: 52px !important;
+  min-height: 52px !important;
+  max-height: 52px !important;
+  flex: 0 0 52px !important;
+  grid-template-columns: 40px minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 6px 12px !important;
+  padding: 6px 12px !important;
+  border: 1px solid #fed7aa !important;
+  border-radius: 8px !important;
+  background: #fff7ed !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-product-visual.compact {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  flex: 0 0 40px !important;
+  border-radius: 6px !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-product-copy {
+  display: flex !important;
+  min-width: 0 !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  overflow: hidden !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-product-copy
+  strong {
+  display: block !important;
+  overflow: hidden !important;
+  color: #1f2937 !important;
+  font-size: 12px !important;
+  font-weight: 650 !important;
+  line-height: 1.2 !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  line-clamp: unset !important;
+  -webkit-line-clamp: unset !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-product-copy
+  b {
+  overflow: hidden !important;
+  color: #1f2937 !important;
+  font-size: 12px !important;
+  font-weight: 750 !important;
+  line-height: 1.2 !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-status-change,
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-schedule-button {
+  display: inline-flex !important;
+  min-width: 0 !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  padding: 0 8px !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  background: #ea580c !important;
+  font: inherit !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-status-change
+  small,
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-status-change
+  em {
+  color: inherit !important;
+  font-size: inherit !important;
+  font-style: normal !important;
+  font-weight: inherit !important;
+}
+
+#root .chat-room-layout .chat-room-layout-header {
+  grid-template-columns: 36px minmax(0, 1fr) 36px !important;
+  gap: 6px !important;
+  padding-right: 8px !important;
+  padding-left: 8px !important;
+}
+
+#root .chat-room-layout .chat-room-layout-header button,
+#root .chat-room-layout .chat-room-layout-header-actions {
+  width: 36px !important;
+  min-width: 36px !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-product-bar {
+  grid-template-columns: 40px minmax(0, 1fr) auto !important;
+  gap: 6px !important;
+  margin-right: 8px !important;
+  margin-left: 8px !important;
+  padding-right: 6px !important;
+  padding-left: 6px !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .marketplace-chat-product-price {
+  display: flex !important;
+  min-width: 0 !important;
+  align-items: center !important;
+  gap: 6px !important;
+  overflow: hidden !important;
+}
+
+#root
+  .chat-room-layout.marketplace-chat-room-view
+  .chat-room-layout-messages.marketplace-chat-messages {
+  display: flex !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  flex: 1 1 0% !important;
+  flex-direction: column !important;
+  gap: 13px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 16px 14px !important;
+  background: #fff !important;
+}
+
+.marketplace-chat-product-visual {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  overflow: hidden;
+  color: #818b83;
+  border-radius: 10px;
+  background: #f1f2ef;
+}
+
+.marketplace-chat-product-visual.compact {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+}
+
+.marketplace-chat-product-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.marketplace-chat-status-readonly {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 4px 2px;
+  color: #6e766f;
+  font-size: 10px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.marketplace-chat-status-readonly small {
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.marketplace-chat-product-visual.compact {
+  width: 50px;
+  height: 50px;
+  flex-basis: 50px;
+}
+
+.marketplace-chat-product-visual.compact {
+  width: 48px;
+  height: 48px;
+  flex-basis: 48px;
+  border-radius: 9px;
+  background: #eef0eb;
+}
+
+.marketplace-chat-product-visual {
+  width: 48px;
+  height: 48px;
+  flex-basis: 48px;
+  border-radius: 9px;
+}
+
+.marketplace-chat-status-readonly {
+  justify-items: end;
+  gap: 5px;
+  padding: 3px 0;
+  color: #8b948c;
+  font-size: 11px;
+}
+
+.marketplace-chat-status-change {
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 0 7px;
+  color: #48534b;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.marketplace-chat-status-change .marketplace-chat-status,
+.marketplace-chat-status-readonly .marketplace-chat-status {
+  min-height: 22px;
+  padding: 4px 7px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.marketplace-chat-status-change:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.marketplace-chat-status-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 50;
+  width: 112px;
+  padding: 4px 0;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 12px #0000001f;
+}
+
+.marketplace-chat-status-dropdown button {
+  display: flex;
+  width: 100%;
+  min-height: 36px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  color: #4b5563;
+  border: 0;
+  background: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.marketplace-chat-status-dropdown button:hover,
+.marketplace-chat-status-dropdown button[aria-checked="true"] {
+  background: #f9fafb;
+}
+
+.marketplace-chat-status-dropdown button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.marketplace-chat-status-readonly {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.marketplace-direct-room-product .marketplace-chat-product-visual.compact,
+.app-frame
+  .marketplace-direct-room-product
+  .marketplace-chat-product-visual.compact {
+  width: 64px !important;
+  height: 64px !important;
+  flex-basis: 64px !important;
+  border-radius: 9px !important;
+}
+
+.marketplace-direct-room-product .marketplace-chat-product-visual.compact,
+.app-frame
+  .marketplace-direct-room-product
+  .marketplace-chat-product-visual.compact {
+  width: 56px !important;
+  height: 56px !important;
+  flex-basis: 56px !important;
+}
+
+.app-frame
+  .marketplace-direct-room-product
+  .marketplace-chat-product-visual.compact {
+  width: 54px !important;
+  height: 54px !important;
+  flex-basis: 54px !important;
+  border-radius: 9px !important;
+}
+
+.app-frame .marketplace-chat-status-readonly {
+  justify-items: end !important;
+  gap: 5px !important;
+  padding: 3px 0 !important;
+  color: #8b948c !important;
+  font-size: 11px !important;
+}
+
+.app-frame .marketplace-chat-status-change {
+  display: flex !important;
+  min-height: 32px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 3px !important;
+  padding: 0 7px !important;
+  color: #48534b !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 7px !important;
+  background: #fff !important;
+}
+
+.app-frame .marketplace-chat-status-dropdown {
+  position: absolute !important;
+  top: calc(100% + 4px) !important;
+  right: 0 !important;
+  z-index: 50 !important;
+  width: 112px !important;
+  padding: 4px 0 !important;
+  overflow: hidden !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+  box-shadow: 0 4px 12px #0000001f !important;
+}
+
+.app-frame .marketplace-chat-status-dropdown button {
+  display: flex !important;
+  width: 100% !important;
+  min-height: 36px !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 8px 12px !important;
+  color: #4b5563 !important;
+  border: 0 !important;
+  background: #fff !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+}
+
+.app-frame .marketplace-chat-status-dropdown button:hover,
+.app-frame .marketplace-chat-status-dropdown button[aria-checked="true"] {
+  background: #f9fafb !important;
+}
+
+.app-frame .marketplace-chat-status-readonly {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  padding: 0 !important;
+}
+
+.app-frame
+  .marketplace-direct-room-product
+  .marketplace-chat-product-visual.compact {
+  width: 48px !important;
+  height: 48px !important;
+  flex-basis: 48px !important;
+}
+
+.app-frame
+  .marketplace-chat-list-view
+  .marketplace-direct-room-card
+  > .marketplace-chat-product-visual.compact {
+  box-sizing: border-box !important;
+  display: grid !important;
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 50px !important;
+  min-height: 50px !important;
+  flex: 0 0 50px !important;
+  margin: 0 12px 0 0 !important;
+  overflow: hidden !important;
+  border-radius: 10px !important;
+  background: #f3f4f6 !important;
+}
+
+.app-frame
+  .marketplace-chat-list-view
+  .marketplace-direct-room-card
+  > .marketplace-chat-product-visual.compact
+  img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.chat-room-actions {
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  display: flex;
+}
+#root .chat-room-layout .chat-room-layout-action-drawer {
+  position: relative !important;
+  z-index: 121 !important;
+  display: flex !important;
+  width: 100% !important;
+  height: 110px !important;
+  min-height: 110px !important;
+  flex: 0 0 110px !important;
+  align-items: stretch !important;
+  margin: 0 !important;
+  padding: 8px 12px 10px !important;
+  border: 0 !important;
+  border-top: 1px solid #f3f4f6 !important;
+  background: #ffffff !important;
+  box-sizing: border-box !important;
+}
+
+#root .chat-room-layout .chat-room-action-options {
+  display: grid !important;
+  width: 100% !important;
+  height: 100% !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #ffffff !important;
+}
+
+#root .chat-room-layout .chat-room-action-options button {
+  display: flex !important;
+  width: 100% !important;
+  height: 78px !important;
+  min-height: 78px !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  color: #374151 !important;
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  cursor: pointer !important;
+}
+
+#root .chat-room-layout .chat-room-action-options button:hover {
+  background: #f9fafb !important;
+}
+
+#root .chat-room-layout .chat-room-action-options button:focus-visible {
+  outline: 2px solid #ff6f0f !important;
+  outline-offset: 2px !important;
+}
+
+#root .chat-room-layout .chat-room-action-options button:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+#root
+  .chat-room-layout.meeting-group-chat-page
+  .meeting-group-chat-pinned-review {
+  display: flex !important;
+  width: calc(100% - 24px) !important;
+  height: 52px !important;
+  min-height: 52px !important;
+  max-height: 52px !important;
+  flex: 0 0 52px !important;
+  align-items: center !important;
+  gap: 10px !important;
+  box-sizing: border-box !important;
+  margin: 6px 12px !important;
+  padding: 5px 10px !important;
+  border: 1px solid #fed7aa !important;
+  border-radius: 8px !important;
+  background: #fff7ed !important;
+}
+
+#root
+  .chat-room-layout.meeting-group-chat-page
+  .meeting-group-chat-pinned-review
+  > img {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  flex: 0 0 40px !important;
+  border-radius: 6px !important;
+  object-fit: cover !important;
+}
+
+#root .chat-room-layout .meeting-chat-menu-divider {
+  height: 1px !important;
+  margin: 4px 10px !important;
+  background: #f3f4f6 !important;
+}
+
+#root .chat-room-layout .meeting-chat-block-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 240 !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 16px !important;
+  background: rgba(17, 24, 39, 0.28) !important;
+}
+
+#root .chat-room-layout .meeting-chat-block-modal {
+  width: min(360px, 100%) !important;
+  max-height: min(72vh, 520px) !important;
+  overflow: auto !important;
+  padding: 18px !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
+  box-shadow: 0 16px 40px rgba(17, 24, 39, 0.18) !important;
+}
+
+#root .chat-room-layout .meeting-chat-block-modal > header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+
+#root .chat-room-layout .meeting-chat-block-modal h2 {
+  margin: 0 !important;
+  color: #111827 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+#root .chat-room-layout .meeting-chat-block-modal > header button {
+  display: grid !important;
+  width: 36px !important;
+  height: 36px !important;
+  place-items: center !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: #f3f4f6 !important;
+  color: #374151 !important;
+}
+
+#root .chat-room-layout .meeting-chat-block-modal > p {
+  margin: 6px 0 12px !important;
+  color: #6b7280 !important;
+  font-size: 12px !important;
+}
+
+#root .chat-room-layout .meeting-chat-block-member {
+  display: flex !important;
+  width: 100% !important;
+  min-height: 46px !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  padding: 8px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid #f3f4f6 !important;
+  background: #ffffff !important;
+  color: #1f2937 !important;
+  font-size: 14px !important;
+  text-align: left !important;
+}
+
+#root .chat-room-layout .meeting-chat-block-member strong {
+  color: #ea580c !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}

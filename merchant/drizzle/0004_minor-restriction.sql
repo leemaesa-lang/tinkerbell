@@ -1,0 +1,2 @@
+ALTER TABLE `business_coupons` ADD `minorRestricted` boolean DEFAULT false NOT NULL;--> statement-breakpoint
+ALTER TABLE `business_trial_campaigns` ADD `minorRestricted` boolean DEFAULT false NOT NULL;

@@ -1,0 +1,35 @@
+.coupon-detail-facilities {
+  margin: 14px 0 0;
+  padding: 0 18px 14px;
+}
+
+.coupon-detail-facilities-title {
+  margin: 0 0 8px;
+  color: #29323a;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.coupon-detail-facility-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.coupon-detail-facility-chip {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid #ead9ce;
+  border-radius: 999px;
+  background: #fff8f2;
+  color: #8e4c2b;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+@media (max-width: 390px) {
+  .coupon-detail-facilities { padding-right: 14px; padding-left: 14px; }
+}

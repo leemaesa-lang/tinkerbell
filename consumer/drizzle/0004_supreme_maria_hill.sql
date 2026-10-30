@@ -1,0 +1,1 @@
+ALTER TABLE `partnerApplications` ADD `isPartnerApplication` boolean DEFAULT true NOT NULL;

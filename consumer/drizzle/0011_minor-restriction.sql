@@ -1,0 +1,1 @@
+ALTER TABLE `consumerCoupons` ADD `minorRestricted` boolean DEFAULT false NOT NULL;
